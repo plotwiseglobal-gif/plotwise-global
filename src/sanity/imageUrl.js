@@ -1,9 +1,1 @@
-import { createImageUrlBuilder } from '@sanity/image-url';
-import { client } from './client';
-
-const builder = createImageUrlBuilder(client);
-
-export const urlFor = (source) => {
-  if (!source) return null;
-  return builder.image(source);
-};
+export { urlFor } from '@/lib/sanity';

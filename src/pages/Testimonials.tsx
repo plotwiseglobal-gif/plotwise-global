@@ -2,6 +2,8 @@ import PageHero from "@/components/PageHero";
 import { Star, Quote } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
 import { useTestimonials } from "@/hooks/useSanityData";
+import LoadingUI from "@/components/LoadingUI";
+import EmptyState from "@/components/EmptyState";
 
 const Testimonials = () => {
   const { testimonials, loading, error } = useTestimonials();
@@ -14,10 +16,7 @@ const Testimonials = () => {
         <PageHero title="What Our Clients Say" subtitle="Real stories from buyers, sellers, and investors around the world." />
         <section className="py-20">
           <div className="container-px mx-auto max-w-7xl">
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
-              <p className="mt-4 text-muted-foreground">Loading testimonials...</p>
-            </div>
+            <LoadingUI message="Loading testimonials..." />
           </div>
         </section>
       </>
@@ -30,9 +29,7 @@ const Testimonials = () => {
         <PageHero title="What Our Clients Say" subtitle="Real stories from buyers, sellers, and investors around the world." />
         <section className="py-20">
           <div className="container-px mx-auto max-w-7xl">
-            <div className="text-center py-12">
-              <p className="text-red-500">Error loading testimonials. Please try again later.</p>
-            </div>
+            <EmptyState title="No testimonials available yet." subtitle="Please check back later for client stories." />
           </div>
         </section>
       </>
@@ -45,9 +42,7 @@ const Testimonials = () => {
         <PageHero title="What Our Clients Say" subtitle="Real stories from buyers, sellers, and investors around the world." />
         <section className="py-20">
           <div className="container-px mx-auto max-w-7xl">
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No testimonials available at the moment.</p>
-            </div>
+            <EmptyState title="No testimonials available yet." subtitle="Please check back later for client stories." />
           </div>
         </section>
       </>

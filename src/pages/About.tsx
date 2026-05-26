@@ -2,6 +2,8 @@ import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import { Eye, Target } from "lucide-react";
 import { useSEO } from "@/hooks/useSEO";
+import arnavImg from "@/assets/Arnav Gowda.png";
+import tanmayImg from "@/assets/Tanmy sai.jpeg";
 
 const About = () => {
   useSEO(
@@ -29,8 +31,8 @@ const About = () => {
           <SectionHeader eyebrow="Leadership" title="Meet Our Founders" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 max-w-3xl mx-auto">
             {[
-              { name: "Jonathan Wells", role: "Founder & CEO", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80", bio: "Two decades of global real estate leadership across three continents." },
-              { name: "Anika Sharma", role: "Co-Founder & COO", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80", bio: "Operations and investment strategy expert with a focus on premium markets." },
+              { name: "Arnav Gowda", role: "Co-Founder & CEO", img: arnavImg, bio: "With a young  interest for real estate from a young age, arnav drives PlotWise Global and its clients with experience, drive and execution" },
+              { name: "Tanmay Sai", role: "Co-Founder & COO", img: tanmayImg, bio: "With years of experience in property management and financial advisory, Tanmay blends passionate real estate ROI with aftercare through drive and execution" },
             ].map((p) => (
               <div key={p.name} className="text-center">
                 <div className="aspect-[3/4] overflow-hidden bg-muted mb-4 sm:mb-5 border border-border">

@@ -1,15 +1,13 @@
 import { createClient } from '@sanity/client';
 
-// Read environment variables (Vite exposes variables prefixed with VITE_ via import.meta.env)
 const projectId = String(import.meta.env.VITE_SANITY_PROJECT_ID ?? '').trim();
 const dataset = String(import.meta.env.VITE_SANITY_DATASET ?? 'production').trim();
 const apiVersion = String(import.meta.env.VITE_SANITY_API_VERSION ?? '2025-01-01').trim();
 const useCdn = import.meta.env.VITE_SANITY_USE_CDN === 'true' || false;
 
-// Basic validation and helpful dev warnings
 if (import.meta.env.DEV) {
-  if (!projectId) console.warn('[Sanity Client] VITE_SANITY_PROJECT_ID is not set. Using studio default may fail.');
-  if (!dataset) console.warn('[Sanity Client] VITE_SANITY_DATASET is not set. Defaulting to "production".');
+  if (!projectId) console.warn('[Sanity Client] VITE_SANITY_PROJECT_ID is not set.');
+  if (!dataset) console.warn('[Sanity Client] VITE_SANITY_DATASET is not set.');
 }
 
 export const client = createClient({

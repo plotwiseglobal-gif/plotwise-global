@@ -6,6 +6,8 @@ import SectionHeader from "@/components/SectionHeader";
 import PropertyCard from "@/components/property/PropertyCard";
 import { Button } from "@/components/ui/button";
 import { useTestimonials } from "@/hooks/useSanityData";
+import LoadingUI from "@/components/LoadingUI";
+import EmptyState from "@/components/EmptyState";
 import { useSEO } from "@/hooks/useSEO";
 import { fetchFeaturedProperties } from "@/services/propertyService";
 
@@ -72,6 +74,10 @@ const Home = () => {
                 <div key={idx} className="h-[24rem] rounded-[1.75rem] bg-muted animate-pulse" />
               ))}
             </div>
+          ) : featuredProperties.length === 0 ? (
+            <div className="max-w-3xl mx-auto">
+              <EmptyState title="No property listings available yet." subtitle="Please check back later for updates." />
+            </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {featuredProperties.map((p) => (
@@ -94,24 +100,30 @@ const Home = () => {
             eyebrow="Client stories"
             title="Trusted by Buyers & Investors"
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {testimonials.slice(0, 3).map((t) => (
-              <div key={t._id} className="bg-card border border-border p-6 sm:p-8">
-                <div className="flex gap-0.5 mb-4 text-gold">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={16} fill="currentColor" />
-                  ))}
+          {testimonials && testimonials.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {testimonials.slice(0, 3).map((t) => (
+                <div key={t._id} className="bg-card border border-border p-6 sm:p-8">
+                  <div className="flex gap-0.5 mb-4 text-gold">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} size={16} fill="currentColor" />
+                    ))}
+                  </div>
+                  <p className="text-foreground/85 leading-relaxed mb-6 text-sm">"{t.message}"</p>
+                  <div>
+                    <p className="font-semibold text-sm">{t.name}</p>
+                    {t.role && (
+                      <p className="text-xs text-muted-foreground">{t.role}</p>
+                    )}
+                  </div>
                 </div>
-                <p className="text-foreground/85 leading-relaxed mb-6 text-sm">"{t.message}"</p>
-                <div>
-                  <p className="font-semibold text-sm">{t.name}</p>
-                  {t.role && (
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className="max-w-2xl mx-auto mt-6">
+              <EmptyState title="No testimonials available yet." subtitle="Please check back later for client stories." />
+            </div>
+          )}
         </div>
       </section>
 

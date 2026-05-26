@@ -24,6 +24,7 @@ const MarketingBuilders = lazy(() => import("./pages/services/MarketingBuilders"
 const FinancialAdvisory = lazy(() => import("./pages/services/FinancialAdvisory"));
 const RealEstateAftercare = lazy(() => import("./pages/services/RealEstateAftercare"));
 const PremiumDemo = lazy(() => import("./pages/PremiumDemo"));
+const SanityDiagnostics = lazy(() => import("./pages/SanityDiagnostics"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -55,6 +56,7 @@ const App = () => (
                 <Route path="/properties" element={<Properties />} />
                 <Route path="/property/:slug" element={<PropertyDetails />} />
                 <Route path="/listings" element={<Navigate to="/properties" replace />} />
+                <Route path="/sanity-diagnostics" element={<SanityDiagnostics />} />
               </Route>
               <Route path="/premium-demo" element={<PremiumDemo />} />
               <Route path="*" element={<NotFound />} />

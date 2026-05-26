@@ -1,4 +1,4 @@
-import { client } from '@/sanity/client';
+import { client } from '@/lib/sanity';
 
 const propertyFields = `
   _id,
@@ -24,16 +24,32 @@ const FEATURED_PROPERTIES_QUERY = `*[_type == "property" && isFeatured == true &
 const PROPERTY_BY_SLUG_QUERY = `*[_type == "property" && slug.current == $slug && (publishedAt <= now() || !defined(publishedAt))][0] { ${propertyFields} }`;
 
 export const fetchAllProperties = async () => {
-  const data = await client.fetch(ALL_PROPERTIES_QUERY);
-  return Array.isArray(data) ? data : [];
+  try {
+    const data = await client.fetch(ALL_PROPERTIES_QUERY);
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    if (import.meta.env.DEV) console.error('fetchAllProperties error:', err);
+    return [];
+  }
 };
 
 export const fetchFeaturedProperties = async () => {
-  const data = await client.fetch(FEATURED_PROPERTIES_QUERY);
-  return Array.isArray(data) ? data : [];
+  try {
+    const data = await client.fetch(FEATURED_PROPERTIES_QUERY);
+    return Array.isArray(data) ? data : [];
+  } catch (err) {
+    if (import.meta.env.DEV) console.error('fetchFeaturedProperties error:', err);
+    return [];
+  }
 };
 
 export const fetchPropertyBySlug = async (slug) => {
   if (!slug) return null;
-  return client.fetch(PROPERTY_BY_SLUG_QUERY, { slug });
+  try {
+    const data = await client.fetch(PROPERTY_BY_SLUG_QUERY, { slug });
+    return data ?? null;
+  } catch (err) {
+    if (import.meta.env.DEV) console.error('fetchPropertyBySlug error:', err);
+    return null;
+  }
 };

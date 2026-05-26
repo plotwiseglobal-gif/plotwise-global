@@ -38,16 +38,19 @@ const Properties = () => {
             </div>
           )}
 
-          {isError && (
-            <div className="rounded-3xl border border-destructive/20 bg-destructive/5 p-8 text-destructive">
-              <h2 className="text-xl font-semibold mb-2">Unable to load properties</h2>
-              <p>{error instanceof Error ? error.message : 'Please try again later.'}</p>
-            </div>
-          )}
-
-          {!isLoading && !isError && properties.length === 0 && (
-            <div className="rounded-3xl border border-border bg-card p-10 text-center text-muted-foreground">
-              No published properties found. Add a property in Sanity Studio to populate this page.
+          {/* Error or empty: show professional empty state */}
+          {!isLoading && (isError || properties.length === 0) && (
+            <div className="max-w-3xl mx-auto">
+              {isError && import.meta.env.DEV && console.error('Properties fetch error:', error)}
+              <div className="rounded-3xl border border-border bg-card p-10">
+                <div className="text-center">
+                  <div className="flex flex-col items-center justify-center py-8">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold mb-4" />
+                    <h2 className="text-2xl font-semibold text-white">No property listings available yet.</h2>
+                    <p className="text-gray-400 mt-2">Please check back later for updates.</p>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 

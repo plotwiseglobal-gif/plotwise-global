@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useSEO } from "@/hooks/useSEO";
 import { useBlogPosts } from "@/hooks/useSanityData";
 import { urlFor } from "@/lib/sanity";
+import LoadingUI from "@/components/LoadingUI";
+import EmptyState from "@/components/EmptyState";
 
 const Blog = () => {
   const { posts, loading, error } = useBlogPosts();
@@ -16,40 +18,25 @@ const Blog = () => {
         <PageHero title="Insights & Updates" subtitle="Trends, guides, and expert perspectives from our team." />
         <section className="py-12">
           <div className="container-px mx-auto max-w-7xl">
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
-              <p className="mt-4 text-muted-foreground">Loading blog posts...</p>
-            </div>
+            <LoadingUI message="Loading blog posts..." />
           </div>
         </section>
       </>
     );
   }
 
-  if (error) {
+  // For both fetch errors and empty results, show a clean empty state.
+  if (error || !posts || posts.length === 0) {
+    if (import.meta.env.DEV && error) console.error('Blog fetch error:', error);
     return (
       <>
         <PageHero title="Insights & Updates" subtitle="Trends, guides, and expert perspectives from our team." />
         <section className="py-12">
           <div className="container-px mx-auto max-w-7xl">
-            <div className="text-center py-12">
-              <p className="text-red-500">Error loading blog posts. Please try again later.</p>
-            </div>
-          </div>
-        </section>
-      </>
-    );
-  }
-
-  if (!posts || posts.length === 0) {
-    return (
-      <>
-        <PageHero title="Insights & Updates" subtitle="Trends, guides, and expert perspectives from our team." />
-        <section className="py-12">
-          <div className="container-px mx-auto max-w-7xl">
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">No blog posts available at the moment.</p>
-            </div>
+            <EmptyState
+              title="No blog content available yet."
+              subtitle="Please check back later for updates."
+            />
           </div>
         </section>
       </>

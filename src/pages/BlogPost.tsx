@@ -5,6 +5,8 @@ import PageHero from "@/components/PageHero";
 import { useBlogPost } from "@/hooks/useSanityData";
 import { urlFor } from "@/lib/sanity";
 import PortableTextRenderer from "@/components/PortableTextRenderer";
+import LoadingUI from "@/components/LoadingUI";
+import EmptyState from "@/components/EmptyState";
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -22,46 +24,26 @@ const BlogPost = () => {
         <PageHero title="Loading..." subtitle="Please wait while we load the blog post." />
         <section className="py-20">
           <div className="container-px mx-auto max-w-4xl">
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-gold"></div>
-              <p className="mt-4 text-muted-foreground">Loading blog post...</p>
-            </div>
+            <LoadingUI message="Loading blog post..." />
           </div>
         </section>
       </>
     );
   }
 
-  if (error) {
-    return (
-      <>
-        <PageHero title="Error" subtitle="There was an error loading this blog post." />
-        <section className="py-20">
-          <div className="container-px mx-auto max-w-4xl">
-            <div className="text-center py-12">
-              <p className="text-red-500 mb-4">Error loading blog post. Please try again later.</p>
-              <Link to="/blog" className="text-gold hover:underline">
-                Browse all posts
-              </Link>
-            </div>
-          </div>
-        </section>
-      </>
-    );
-  }
-
-  if (!post) {
+  if (error || !post) {
+    if (import.meta.env.DEV && error) console.error('BlogPost fetch error:', error);
     return (
       <>
         <PageHero title="Post Not Found" subtitle="The blog post you're looking for doesn't exist." />
         <section className="py-20">
           <div className="container-px mx-auto max-w-4xl">
-            <div className="text-center py-12">
-              <p className="text-muted-foreground mb-4">The blog post you're looking for doesn't exist.</p>
-              <Link to="/blog" className="text-gold hover:underline">
-                Browse all posts
-              </Link>
-            </div>
+            <EmptyState
+              title="The blog post you're looking for doesn't exist."
+              subtitle="Browse our blog for other insights."
+              actionLabel="Browse all posts"
+              actionHref="/blog"
+            />
           </div>
         </section>
       </>

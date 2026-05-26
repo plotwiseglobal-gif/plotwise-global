@@ -1,14 +1,13 @@
 export const SITE = {
   name: "Plot Wise Global",
-  email: "info@plotwiseglobal.com",
-  linkedin: "https://www.linkedin.com/company/plot-wise-global",
+  email: "support@plotwiseglobal.com",
+  linkedin: "https://www.linkedin.com/company/plotwise-global/",
 };
 
 export const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
-  { to: "/properties", label: "Properties" },
   { to: "/blog", label: "Blog" },
   { to: "/testimonials", label: "Testimonials" },
   { to: "/faq", label: "FAQ" },
