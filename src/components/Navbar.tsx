@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { NAV_LINKS, SITE } from "@/data/site";
+import { NAV_LINKS } from "@/data/site";
 import logo from "../assets/plotwise_.png";
 
 const servicesDropdownItems = [
@@ -20,7 +20,6 @@ const Navbar = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
@@ -32,15 +31,13 @@ const Navbar = () => {
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleServicesClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setServicesDropdownOpen(!servicesDropdownOpen);
+    setServicesDropdownOpen((current) => !current);
   };
 
   const handleDropdownItemClick = () => {
@@ -49,42 +46,42 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-black text-white border-b border-gray-800 w-full">
-      <div className="w-full flex items-center justify-between h-16 px-6 lg:px-12">
-        <div className="flex items-center justify-center flex-shrink-0">
-          <Link to="/" className="flex items-center justify-center" onClick={() => setOpen(false)}>
-            <img 
-              src={logo} 
-              alt="Plot Wise Global Logo" 
-              className="h-14 w-auto object-contain"
-            />
-          </Link>
-        </div>
+    <header className="sticky top-0 z-50 w-full border-b border-gray-800 bg-black text-white">
+      <div className="mx-auto flex h-[80px] max-w-screen-2xl items-center justify-between px-6 lg:px-10 xl:px-16">
+        <Link
+          to="/"
+          className="flex items-center flex-shrink-0"
+          onClick={() => {
+            setOpen(false);
+            setServicesDropdownOpen(false);
+          }}
+        >
+          <img src={logo} alt="Plot Wise Global Logo" className="h-14 w-auto object-contain" />
+        </Link>
 
-        <nav className="hidden lg:flex items-center gap-8 whitespace-nowrap">
-          {NAV_LINKS.map((l) => (
-            l.label === "Services" ? (
+        <nav className="hidden lg:flex items-center justify-center gap-10 flex-nowrap whitespace-nowrap">
+          {NAV_LINKS.map((link) =>
+            link.label === "Services" ? (
               <div
-                key={l.to}
+                key={link.to}
                 ref={dropdownRef}
-                className="relative flex items-center"
+                className="relative inline-flex h-full items-center"
                 onMouseEnter={() => setServicesDropdownOpen(true)}
                 onMouseLeave={() => setServicesDropdownOpen(false)}
               >
                 <button
                   onClick={handleServicesClick}
-                  className="flex items-center text-xs sm:text-sm font-medium transition-colors text-white/80 hover:text-yellow-400"
-                    type="button"
+                  type="button"
+                  className="inline-flex h-full items-center text-sm font-medium leading-none text-white/80 transition-colors hover:text-yellow-400"
                 >
                   Services
                 </button>
-                
-                {/* Dropdown Menu */}
+
                 <div
-                  className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 min-w-[220px] bg-white border border-gray-200 rounded-lg shadow-xl transition-all duration-300 origin-top ${
-                    servicesDropdownOpen 
-                      ? 'opacity-100 scale-100 visible' 
-                      : 'opacity-0 scale-95 invisible'
+                  className={`absolute top-full left-0 mt-2 min-w-[220px] rounded-2xl border border-gray-200 bg-white shadow-2xl transition-all duration-200 origin-top ${
+                    servicesDropdownOpen
+                      ? "opacity-100 scale-100 visible"
+                      : "opacity-0 scale-95 invisible"
                   }`}
                 >
                   {servicesDropdownItems.map((item, index) => (
@@ -92,7 +89,7 @@ const Navbar = () => {
                       key={index}
                       to={item.path}
                       onClick={handleDropdownItemClick}
-                      className="w-full block text-left px-4 py-3 text-sm text-gray-700 hover:text-black hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg border-b border-gray-100 last:border-b-0"
+                      className="block rounded-t-2xl px-4 py-3 text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-black first:rounded-t-2xl last:rounded-b-2xl border-b border-gray-100 last:border-b-0"
                     >
                       {item.name}
                     </Link>
@@ -101,53 +98,51 @@ const Navbar = () => {
               </div>
             ) : (
               <NavLink
-                key={l.to}
-                to={l.to}
-                end={l.to === "/"}
+                key={link.to}
+                to={link.to}
+                end={link.to === "/"}
                 className={({ isActive }) =>
-                  `flex items-center text-sm font-medium transition-colors px-3 py-2 ${
+                  `inline-flex h-full items-center text-sm font-medium leading-none transition-colors ${
                     isActive ? "text-yellow-400" : "text-white/80 hover:text-yellow-400"
                   }`
                 }
               >
-                {l.label}
+                {link.label}
               </NavLink>
             )
-          ))}
+          )}
         </nav>
 
         <button
-          className="lg:hidden text-white p-1.5 hover:text-gray-300"
-          onClick={() => setOpen((o) => !o)}
+          className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-md text-white transition-colors hover:text-gray-300"
+          onClick={() => setOpen((current) => !current)}
           aria-label="Toggle menu"
         >
-          {open ? <X size={20} /> : <Menu size={20} />}
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {open && (
-        <div className="lg:hidden bg-black border-t border-gray-800 animate-in slide-in-from-top duration-200">
-          <nav className="container-px mx-auto py-3 sm:py-4 flex flex-col gap-0.5">
-            {NAV_LINKS.map((l) => (
-              l.label === "Services" ? (
-                <div key={l.to} ref={mobileDropdownRef}>
+        <div className="lg:hidden border-t border-gray-800 bg-black">
+          <nav className="mx-auto flex w-full max-w-screen-2xl flex-col gap-1 px-4 py-4 sm:px-6">
+            {NAV_LINKS.map((link) =>
+              link.label === "Services" ? (
+                <div key={link.to} ref={mobileDropdownRef} className="space-y-1">
                   <button
                     onClick={handleServicesClick}
                     type="button"
-                    className="w-full py-2.5 sm:py-3 px-2 text-sm font-medium border-b border-gray-700 text-white/80 hover:text-yellow-400 text-left"
+                    className="w-full rounded-2xl border border-gray-700 bg-gray-900 px-4 py-3 text-left text-sm font-medium text-white/80 transition-colors hover:border-yellow-400 hover:text-yellow-400"
                   >
                     Services
                   </button>
-                  
-                  {/* Mobile Dropdown Menu */}
                   {servicesDropdownOpen && (
-                    <div className="bg-gray-900 border-l-4 border-yellow-400">
+                    <div className="space-y-1 rounded-2xl border border-yellow-400 bg-gray-900 p-1">
                       {servicesDropdownItems.map((item, index) => (
                         <Link
                           key={index}
                           to={item.path}
                           onClick={handleDropdownItemClick}
-                          className="w-full block text-left py-2.5 px-6 text-sm text-white/70 hover:text-yellow-400 hover:bg-gray-800 transition-colors border-b border-gray-700"
+                          className="block rounded-xl px-5 py-3 text-sm text-white/80 transition-colors hover:bg-gray-800 hover:text-yellow-400"
                         >
                           {item.name}
                         </Link>
@@ -157,20 +152,20 @@ const Navbar = () => {
                 </div>
               ) : (
                 <NavLink
-                  key={l.to}
-                  to={l.to}
-                  end={l.to === "/"}
+                  key={link.to}
+                  to={link.to}
+                  end={link.to === "/"}
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
-                    `py-2.5 sm:py-3 px-2 text-sm font-medium border-b border-gray-700 ${
+                    `block rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
                       isActive ? "text-yellow-400" : "text-white/80 hover:text-yellow-400"
                     }`
                   }
                 >
-                  {l.label}
+                  {link.label}
                 </NavLink>
               )
-            ))}
+            )}
           </nav>
         </div>
       )}

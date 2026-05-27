@@ -1,5 +1,5 @@
 export const SITE = {
-  name: "Plot Wise Global",
+  name: "PlotWise Global",
   email: "support@plotwiseglobal.com",
   linkedin: "https://www.linkedin.com/company/plotwise-global/",
 };
