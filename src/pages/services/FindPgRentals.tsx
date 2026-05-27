@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const FindPgRentals = () => {
   useSEO(
-    "Find PG & Rentals — Plot Wise Global",
+    "Find PG & Rentals — PlotWise Global",
     "Discover verified PG and rental properties with budget-friendly options and easy booking process."
   );
 

@@ -56,7 +56,7 @@ const Navbar = () => {
             setServicesDropdownOpen(false);
           }}
         >
-          <img src={logo} alt="Plot Wise Global Logo" className="h-14 w-auto object-contain" />
+          <img src={logo} alt="PlotWise Global Logo" className="h-14 w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center justify-center gap-10 flex-nowrap whitespace-nowrap">
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <button
                   onClick={handleServicesClick}
                   type="button"
-                  className="inline-flex h-full items-center text-sm font-medium leading-none text-white/80 transition-colors hover:text-yellow-400"
+                  className="inline-flex h-full items-center text-sm font-medium leading-none text-white/80 transition-colors hover:text-[#22C55E]"
                 >
                   Services
                 </button>
@@ -103,7 +103,7 @@ const Navbar = () => {
                 end={link.to === "/"}
                 className={({ isActive }) =>
                   `inline-flex h-full items-center text-sm font-medium leading-none transition-colors ${
-                    isActive ? "text-yellow-400" : "text-white/80 hover:text-yellow-400"
+                    isActive ? "text-[#22C55E]" : "text-white/80 hover:text-[#22C55E]"
                   }`
                 }
               >
@@ -131,18 +131,18 @@ const Navbar = () => {
                   <button
                     onClick={handleServicesClick}
                     type="button"
-                    className="w-full rounded-2xl border border-gray-700 bg-gray-900 px-4 py-3 text-left text-sm font-medium text-white/80 transition-colors hover:border-yellow-400 hover:text-yellow-400"
+                    className="w-full rounded-2xl border border-gray-700 bg-gray-900 px-4 py-3 text-left text-sm font-medium text-white/80 transition-colors hover:border-[#22C55E] hover:text-[#22C55E]"
                   >
                     Services
                   </button>
                   {servicesDropdownOpen && (
-                    <div className="space-y-1 rounded-2xl border border-yellow-400 bg-gray-900 p-1">
+                    <div className="space-y-1 rounded-2xl border border-[#22C55E] bg-gray-900 p-1">
                       {servicesDropdownItems.map((item, index) => (
                         <Link
                           key={index}
                           to={item.path}
                           onClick={handleDropdownItemClick}
-                          className="block rounded-xl px-5 py-3 text-sm text-white/80 transition-colors hover:bg-gray-800 hover:text-yellow-400"
+                          className="block rounded-xl px-5 py-3 text-sm text-white/80 transition-colors hover:bg-[#22C55E]/10 hover:text-[#22C55E]"
                         >
                           {item.name}
                         </Link>
@@ -158,7 +158,7 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     `block rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
-                      isActive ? "text-yellow-400" : "text-white/80 hover:text-yellow-400"
+                      isActive ? "text-[#22C55E]" : "text-white/80 hover:text-[#22C55E]"
                     }`
                   }
                 >

@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const FinancialAdvisory = () => {
   useSEO(
-    "Financial Advisory — Plot Wise Global",
+    "Financial Advisory — PlotWise Global",
     "Expert financial advisory services including loan assistance, EMI planning, and investment planning for real estate."
   );
 

@@ -1,4 +1,4 @@
-# Plot Wise Global
+# PlotWise Global
 
 Professional real estate platform for property buying, selling, and investment consulting.
 

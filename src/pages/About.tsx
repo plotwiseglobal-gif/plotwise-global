@@ -7,21 +7,21 @@ import tanmayImg from "@/assets/Tanmy sai.jpeg";
 
 const About = () => {
   useSEO(
-    "About — Plot Wise Global",
-    "Learn about Plot Wise Global, a trusted global real estate firm helping clients buy, sell, and invest with confidence."
+    "About — PlotWise Global",
+    "Learn about PlotWise Global, a trusted global real estate firm helping clients buy, sell, and invest with confidence."
   );
 
   return (
     <>
       <PageHero
-        title="About Plot Wise Global"
+        title="About PlotWise Global"
         subtitle="A modern real estate firm built on trust, expertise, and global reach."
       />
 
       <section className="py-12 sm:py-16 md:py-20 lg:py-28">
         <div className="container-px mx-auto max-w-5xl">
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed text-center max-w-3xl mx-auto mb-12 sm:mb-20 px-4">
-            Plot Wise Global is a corporate real estate firm dedicated to helping individuals,
+            PlotWise Global is a corporate real estate firm dedicated to helping individuals,
             families, and institutional investors navigate property markets worldwide. With
             decades of combined experience and a network spanning major cities, our advisors
             deliver bespoke solutions across buying, selling, investing, and managing real estate.
@@ -49,23 +49,23 @@ const About = () => {
 
       {/* Vision & Mission */}
       <section className="bg-secondary py-12 sm:py-16 md:py-20 lg:py-28">
-        <div className="container-px mx-auto max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          <div className="bg-card border border-border p-6 sm:p-8 lg:p-10">
-            <Eye className="text-gold mb-4 sm:mb-5" size={24} />
-            <h3 className="font-display font-bold text-xl sm:text-2xl mb-3">Our Vision</h3>
-            <p className="text-muted-foreground leading-relaxed">
+        <div className="container-px mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
+          <article className="flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8 lg:p-10">
+            <Eye className="mb-4 text-gold sm:mb-5" size={24} />
+            <h3 className="mb-3 font-display text-xl font-bold sm:text-2xl">Our Vision</h3>
+            <p className="max-w-md text-muted-foreground leading-relaxed">
               To be the most trusted real estate partner globally — empowering clients to make
               confident, informed property decisions wherever they live or invest.
             </p>
-          </div>
-          <div className="bg-card border border-border p-6 sm:p-8 lg:p-10">
-            <Target className="text-gold mb-4 sm:mb-5" size={24} />
-            <h3 className="font-display font-bold text-xl sm:text-2xl mb-3">Our Mission</h3>
-            <p className="text-muted-foreground leading-relaxed">
+          </article>
+          <article className="flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8 lg:p-10">
+            <Target className="mb-4 text-gold sm:mb-5" size={24} />
+            <h3 className="mb-3 font-display text-xl font-bold sm:text-2xl">Our Mission</h3>
+            <p className="max-w-md text-muted-foreground leading-relaxed">
               To deliver transparent, expert real estate services backed by integrity, market
               insight, and a relentless commitment to client success.
             </p>
-          </div>
+          </article>
         </div>
       </section>
     </>

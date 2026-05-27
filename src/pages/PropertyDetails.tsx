@@ -50,7 +50,7 @@ const PropertyDetails = () => {
   }, [property]);
 
   useSEO(
-    property ? `${property.title} — Plot Wise Global` : 'Property Details — Plot Wise Global',
+    property ? `${property.title} — PlotWise Global` : 'Property Details — PlotWise Global',
     seoDescription
   );
 

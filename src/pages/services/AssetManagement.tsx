@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const AssetManagement = () => {
   useSEO(
-    "Asset Management — Plot Wise Global",
+    "Asset Management — PlotWise Global",
     "Comprehensive property management services including maintenance, tenant management, and performance tracking."
   );
 

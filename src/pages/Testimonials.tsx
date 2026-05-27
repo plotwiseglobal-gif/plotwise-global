@@ -8,7 +8,7 @@ import EmptyState from "@/components/EmptyState";
 const Testimonials = () => {
   const { testimonials, loading, error } = useTestimonials();
   
-  useSEO("Testimonials — Plot Wise Global", "Real reviews from buyers, sellers, and investors who trust Plot Wise Global.");
+  useSEO("Testimonials — PlotWise Global", "Real reviews from buyers, sellers, and investors who trust PlotWise Global.");
 
   if (loading) {
     return (

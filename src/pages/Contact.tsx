@@ -18,7 +18,7 @@ const schema = z.object({
 });
 
 const Contact = () => {
-  useSEO("Contact — Plot Wise Global", "Get in touch with Plot Wise Global for property inquiries, consulting, and management.");
+  useSEO("Contact — PlotWise Global", "Get in touch with PlotWise Global for property inquiries, consulting, and management.");
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);

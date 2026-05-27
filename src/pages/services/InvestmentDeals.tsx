@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const InvestmentDeals = () => {
   useSEO(
-    "Investment Deals — Plot Wise Global",
+    "Investment Deals — PlotWise Global",
     "High ROI properties and pre-launch offers with comprehensive investment analysis and legal support."
   );
 

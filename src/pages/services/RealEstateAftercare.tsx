@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const RealEstateAftercare = () => {
   useSEO(
-    "Real Estate Aftercare — Plot Wise Global",
+    "Real Estate Aftercare — PlotWise Global",
     "Comprehensive post-sale support including documentation help, interior assistance, and maintenance services."
   );
 

@@ -13,8 +13,8 @@ const BlogPost = () => {
   const { post, loading, error } = useBlogPost(slug);
 
   // Set SEO meta tags
-  const seoTitle = post ? `${post.title} — Plot Wise Global` : "Post Not Found — Plot Wise Global";
-  const seoDescription = post ? (post.excerpt || `Read ${post.title} on Plot Wise Global`) : "The blog post you're looking for doesn't exist.";
+  const seoTitle = post ? `${post.title} — PlotWise Global` : "Post Not Found — PlotWise Global";
+  const seoDescription = post ? (post.excerpt || `Read ${post.title} on PlotWise Global`) : "The blog post you're looking for doesn't exist.";
   
   useSEO(seoTitle, seoDescription);
 

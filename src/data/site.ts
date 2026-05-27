@@ -24,7 +24,7 @@ export const HERO_SLIDES = [
 // No hardcoded property content remains in the frontend.
 
 export const FAQS = [
-  { q: "What services does Plot Wise Global offer?", a: "We provide property buying, selling, investment consulting, and full-service property management across global markets." },
+  { q: "What services does PlotWise Global offer?", a: "We provide property buying, selling, investment consulting, and full-service property management across global markets." },
   { q: "Do you handle international property purchases?", a: "Yes. Our team specializes in cross-border transactions with local expertise in major markets worldwide." },
   { q: "How are your fees structured?", a: "Fees vary by service. Brokerage is commission-based; consulting and management have transparent flat or percentage rates discussed upfront." },
   { q: "Can I list my property with you?", a: "Absolutely. Contact us through the form and a senior advisor will reach out within 24 hours to discuss your listing." },

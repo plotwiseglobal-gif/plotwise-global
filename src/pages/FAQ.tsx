@@ -4,7 +4,7 @@ import { FAQS } from "@/data/site";
 import { useSEO } from "@/hooks/useSEO";
 
 const FAQ = () => {
-  useSEO("FAQ — Plot Wise Global", "Answers to common questions about buying, selling, investing, and managing property with Plot Wise Global.");
+  useSEO("FAQ — PlotWise Global", "Answers to common questions about buying, selling, investing, and managing property with PlotWise Global.");
   return (
     <>
       <PageHero title="Frequently Asked Questions" subtitle="Everything you need to know before working with us." />

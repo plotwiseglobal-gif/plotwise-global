@@ -16,8 +16,8 @@ const Services = () => {
   });
 
   useSEO(
-    "Services & Listings — Plot Wise Global",
-    "Browse premium property listings worldwide with Plot Wise Global. Filter by price, location, and property type."
+    "Services & Listings — PlotWise Global",
+    "Browse premium property listings worldwide with PlotWise Global. Filter by price, location, and property type."
   );
 
   return (

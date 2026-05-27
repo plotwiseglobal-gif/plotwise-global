@@ -27,8 +27,8 @@ const Home = () => {
   });
 
   useSEO(
-    "Plot Wise Global — Trusted Real Estate Solutions Worldwide",
-    "Buy, sell, invest, and manage premium properties with Plot Wise Global, your trusted global real estate partner."
+    "PlotWise Global — Trusted Real Estate Solutions Worldwide",
+    "Buy, sell, invest, and manage premium properties with PlotWise Global, your trusted global real estate partner."
   );
 
   return (
@@ -45,16 +45,16 @@ const Home = () => {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {features.map((f) => (
-              <div
+              <article
                 key={f.title}
-                className="border border-border p-4 sm:p-6 lg:p-8 bg-card hover:border-gold/60 transition-colors group"
+                className="group flex h-full flex-col items-center justify-center rounded-2xl border border-border bg-card p-5 text-center shadow-sm transition-all duration-300 hover:border-gold/60 hover:shadow-md sm:p-6 lg:p-8"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 mb-4 sm:mb-5 flex items-center justify-center bg-secondary group-hover:bg-gold/10 transition-colors">
-                  <f.icon className="text-gold" size={18} />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary text-gold transition-colors group-hover:bg-gold/10 sm:h-14 sm:w-14">
+                  <f.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </div>
-                <h3 className="font-display font-semibold text-base sm:text-lg mb-2">{f.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-              </div>
+                <h3 className="mb-3 font-display text-base font-semibold sm:text-lg lg:text-xl">{f.title}</h3>
+                <p className="text-sm leading-relaxed text-muted-foreground sm:text-[0.95rem]">{f.desc}</p>
+              </article>
             ))}
           </div>
         </div>

@@ -16,7 +16,7 @@ import { useSEO } from "@/hooks/useSEO";
 
 const MarketingBuilders = () => {
   useSEO(
-    "Marketing for Builders — Plot Wise Global",
+    "Marketing for Builders — PlotWise Global",
     "Comprehensive marketing solutions for builders including digital marketing, lead generation, and branding strategies."
   );
 

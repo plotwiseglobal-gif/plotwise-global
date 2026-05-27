@@ -17,7 +17,7 @@ const Properties = () => {
   });
 
   useSEO(
-    'Properties — Plot Wise Global',
+    'Properties — PlotWise Global',
     'Browse all available properties managed through Sanity Studio with real-time updates and live pricing.'
   );
 
